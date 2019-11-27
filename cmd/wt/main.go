@@ -1,9 +1,21 @@
 package main
 
 import (
-	"fmt"
+	"github.com/marcofranssen/whisky-tango/cmd/wt/cmd"
+)
+
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
 )
 
 func main() {
-	fmt.Println("Whisky Tango")
+	v := cmd.VersionInfo{
+		Version: version,
+		Commit:  commit,
+		Date:    cmd.ParseDate(date),
+	}
+
+	cmd.Execute(v)
 }
