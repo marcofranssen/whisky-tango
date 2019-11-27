@@ -1,3 +1,6 @@
+test: build
+	@go test -v ./...
+
 build: download
 	@echo Building binaries
 	@go build -o bin/wt ./cmd/wt
