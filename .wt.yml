@@ -1,0 +1,8 @@
+apps:
+  - go
+  - git
+  - git-lfs
+  - git-crypt
+  - zsh
+  - keychain
+  - yarn

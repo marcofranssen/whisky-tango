@@ -7,11 +7,31 @@ Whisky Tango is a cross platform tool to install your applications using a confi
 To build the binary simply run `make`.
 
 ```bash
-make
+$ make
+Download go.mod dependencies
+Building binaries
 ```
 
 To run Wisky Tango you can invoke the binary.
 
 ```bash
-bin/wt
+$ bin/wt
+Using config file: /Users/marco/code/priv/whisky-tango/.wt.yml
+Whisky Tango, automates your machine setup
+
+Usage:
+  wt [flags]
+  wt [command]
+
+Available Commands:
+  config      Get current configuration as json output
+  help        Help about any command
+  install     installs your apps
+  version     shows version information
+
+Flags:
+      --config string   config file (default is $HOME/.wt.yml)
+  -h, --help            help for wt
+
+Use "wt [command] --help" for more information about a command.
 ```
