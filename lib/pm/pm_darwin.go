@@ -10,3 +10,8 @@ import (
 func NewInstaller() Installer {
 	return &homebrew.Homebrew{}
 }
+
+// NewAppLister creates a new instance of a application lister
+func NewAppLister() AppLister {
+	return &homebrew.Homebrew{}
+}

@@ -11,3 +11,8 @@ type Chocolatey struct{}
 func (i *Chocolatey) Install(apps []string) error {
 	return fmt.Errorf("chocolatey installer is not yet implemented")
 }
+
+// List lists applications installed with chocolatey
+func (i *Homebrew) List() ([]string, error) {
+	return make([]string, 0), fmt.Errorf("chocolatey app lister is not yet implemented")
+}
