@@ -1,4 +1,4 @@
-package installer
+package pm
 
 // Installer installs given applications
 type Installer interface {

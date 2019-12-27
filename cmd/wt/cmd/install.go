@@ -4,7 +4,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/marcofranssen/whisky-tango/lib/installer"
+	"github.com/marcofranssen/whisky-tango/lib/pm"
 )
 
 var (
@@ -14,7 +14,7 @@ var (
 		Run: func(cmd *cobra.Command, _ []string) {
 			cmd.Printf("%s\n\nInstall apps:\n", rootCmd.Short)
 			apps := viper.GetStringSlice("apps")
-			i := installer.NewInstaller()
+			i := pm.NewInstaller()
 			err := i.Install(apps)
 			if err != nil {
 				cmd.PrintErr(err)

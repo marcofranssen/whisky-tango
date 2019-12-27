@@ -1,5 +1,7 @@
 // +build windows
 
+package pm
+
 import (
     "github.com/marcofranssen/whisky-tango/lib/installer/plugins/chocolatey"
 )
