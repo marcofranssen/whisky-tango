@@ -5,7 +5,10 @@ import (
 	"strings"
 )
 
+// App represents an App
 type App string
+
+// AppList list of apps
 type AppList []App
 
 func List() (AppList, error) {
@@ -35,6 +38,17 @@ func ListCasks() (AppList, error) {
 	}
 
 	return apps, nil
+}
+
+func Install(cask bool, apps []string) error {
+	var args []string
+	if cask {
+		args = append([]string{"cask", "install"}, apps...)
+	} else {
+		args = append([]string{"install"}, apps...)
+	}
+	_, err := runBrewCmd(args...)
+	return err
 }
 
 func runBrewCmd(args ...string) (string, error) {

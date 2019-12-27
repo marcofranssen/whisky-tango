@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"strings"
+
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
@@ -14,10 +16,13 @@ var (
 		Run: func(cmd *cobra.Command, _ []string) {
 			cmd.Printf("%s\n\nInstall apps:\n", rootCmd.Short)
 			apps := viper.GetStringSlice("apps")
+			cmd.Print(strings.Join(apps, " "))
+			cmd.Println()
+
 			i := pm.NewInstaller()
 			err := i.Install(apps)
 			if err != nil {
-				cmd.PrintErr(err)
+				cmd.PrintErrln(err)
 			}
 		},
 	}
