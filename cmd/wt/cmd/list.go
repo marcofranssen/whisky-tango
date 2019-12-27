@@ -17,7 +17,7 @@ var (
 			i := pm.NewAppLister()
 			apps, err := i.List()
 			if err != nil {
-				cmd.PrintErr(err)
+				cmd.PrintErrln(err)
 				return
 			}
 			cmd.Print(strings.Join(apps, " "))

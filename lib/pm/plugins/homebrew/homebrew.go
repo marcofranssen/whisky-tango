@@ -18,8 +18,23 @@ func (i *Homebrew) Install(apps []string) error {
 
 // List lists applications installed with brew or brew cask
 func (i *Homebrew) List() ([]string, error) {
-	fmt.Println("  brew list")
-	fmt.Println("  brew cask list")
+	brews, err := List()
+	if err != nil {
+		return make([]string, 0), err
+	}
+	casks, err := ListCasks()
+	if err != nil {
+		return make([]string, 0), err
+	}
 
-	return make([]string, 0), nil
+	apps := make([]string, len(brews)+len(casks))
+	for i, brew := range brews {
+		apps[i] = string(brew)
+	}
+	fromBrews := len(brews) - 1
+	for i, cask := range casks {
+		apps[fromBrews+i] = string(cask)
+	}
+
+	return apps, nil
 }
