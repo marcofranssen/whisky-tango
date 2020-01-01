@@ -50,18 +50,22 @@ func writeRecurseSetting(w io.Writer, prefix string, settings map[string]interfa
 	for _, k := range keys {
 		v := settings[k]
 		t := reflect.TypeOf(v)
+
+		var key string
+		if prefix != "" {
+			key = prefix + "." + k
+		} else {
+			key = k
+		}
+
 		if t.Kind() == reflect.Map {
-			if prefix != "" {
-				writeRecurseSetting(w, prefix+"."+k, v.(map[string]interface{}))
-			} else {
-				writeRecurseSetting(w, k, v.(map[string]interface{}))
-			}
+			writeRecurseSetting(w, key, v.(map[string]interface{}))
 		} else {
 			if t.Kind() == reflect.Slice || t.Kind() == reflect.Array {
-				slice := strings.Replace(fmt.Sprintf("%q", v), "\" \"", "\",\"", -1)
-				fmt.Fprintf(w, "\t%s:\t%s\n", prefix+"."+k, slice)
+				slice := strings.Replace(fmt.Sprintf("%q", v), "\" \"", "\", \"", -1)
+				fmt.Fprintf(w, "\t%s:\t%s\n", key, slice)
 			} else {
-				fmt.Fprintf(w, "\t%s:\t%v\n", prefix+"."+k, v)
+				fmt.Fprintf(w, "\t%s:\t%v\n", key, v)
 			}
 		}
 	}
