@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	expSettings = `  .apps:  ["go","git","git-lfs","git-crypt","zsh","keychain","yarn"]
+	expSettings = `  apps:  ["go", "git", "git-lfs", "git-crypt", "zsh", "keychain", "yarn"]
 `
 	expCfg = "\nconfig:\n" + expSettings
 )
